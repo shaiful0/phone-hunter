@@ -93,3 +93,10 @@ document.getElementById('display-details').textContent = ''
       sectionContainer.appendChild(div)
   })
 }
+// load single item details starts here
+const loadDetails = data => {
+  const url = `https://openapi.programming-hero.com/api/phone/${data}`
+  fetch(url)
+      .then(res => res.json())
+      .then(data => displayDetails(data.data))
+}
