@@ -123,6 +123,6 @@ const displayDetails = info => {
 </div>
   `;
   detailsDiv.appendChild(div)
-  // scroll bar 
-  window.scrollTo(0, 130)
+
+  
 }
