@@ -100,3 +100,29 @@ const loadDetails = data => {
       .then(res => res.json())
       .then(data => displayDetails(data.data))
 }
+
+// display single item detalis starts here
+const displayDetails = info => {
+  // clearing single details div if its available
+  document.getElementById('display-details').textContent = ''
+  const detailsDiv = document.getElementById('display-details')
+  const div = document.createElement('div')
+  div.innerHTML = `
+   <div class="card w-100 mx-auto my-3">
+   <img src="${info.image}" class="card-img-top w-50 mx-auto pt-2" alt="...">
+   <div class="card-body">
+   <h3 class="card-title fw-bolder">${info.name}</h3>
+   <h4 class="card-title">${info.releaseDate ? info.releaseDate : 'No release date found'}</h4>
+   <h4 class="card-title">${info.brand}</h4>
+   <h4 class="card-title fw-bold my-4">Main-Features:</h4>
+   <h5 class="card-title">
+   <span class="fw-bold">Chipset:</span> ${info.mainFeatures.chipSet ? info.mainFeatures.chipSet : 'Not Available'},<br>
+   <span class="fw-bold">Storage:</span> ${info.mainFeatures.memory ? info.mainFeatures.memory : 'Not Available'},<br>
+   <span class="fw-bold">Display:</span> ${info.mainFeatures.displaySize ? info.mainFeatures.displaySize : 'Not Available'},<br>
+   <span class="fw-bold">Sensors: </span>${info.mainFeatures.sensors ? info.mainFeatures.sensors.join(',') : 'Not Available'}</h5>
+</div>
+  `;
+  detailsDiv.appendChild(div)
+  // scroll bar 
+  window.scrollTo(0, 130)
+}
